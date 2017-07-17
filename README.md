@@ -4,9 +4,9 @@
 Card Info - API v1 ile bize olası dönebilecek bilgiler :
 
 - "binType":"VISA" (ya da MasterCard vb olarak kartın tipini öğrenebilir, ilgili sayfanızda hazırlayacağınız temsili bir kart ile de logosunu gösterebilirsiniz.)
-- "binIssuer":"Credit Europe Bank",
+- "binIssuer":"IS BANK",
 - "cardType":"CREDIT",
-- "country":"Romania",
-- "program":"AVANTAJ",
-- "installments":[1,6,12],
-- "paymentMethod":"CARD_AVANTAJ"
+- "country":"Turkey",
+- "program":"Maximum",
+- "installments":[1,"2","3","4","5","6","7","8","9","10","11","12"],
+- "paymentMethod":"CCVISAMC"
