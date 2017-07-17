@@ -3,10 +3,11 @@
 ## Card Info - API v1
 Card Info - API v1 ile bize olası dönebilecek bilgiler :
 
-- "binType":"VISA" (ya da MasterCard vb olarak kartın tipini öğrenebilir, ilgili sayfanızda hazırlayacağınız temsili bir kart ile de logosunu gösterebilirsiniz.)
-- "binIssuer":"IS BANK",
+- "binType":"VISA"
+- "binIssuer":"IS BANK", 
 - "cardType":"CREDIT",
 - "country":"Turkey",
 - "program":"Maximum",
 - "installments":[1,"2","3","4","5","6","7","8","9","10","11","12"],
 - "paymentMethod":"CCVISAMC"
+<p>binType: VISA, MasterCard vb olarak kartın tipini öğrenebilir, ilgili sayfanızda hazırlayacağınız temsili bir kart ile de logosunu gösterebilirsiniz. Ayrıca kartın ilk 6 hanenin girilmesini beklemeden de kartın ilk iki hanesi ve küçük bir liste ile aynı kontrolü sağlayabilirsiniz.</p>
