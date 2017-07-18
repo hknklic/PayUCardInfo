@@ -11,4 +11,5 @@ Card Info - API v1 ile bize olası dönebilecek bilgiler :
 - "installments":[1,"2","3","4","5","6","7","8","9","10","11","12"],
 - "paymentMethod":"CCVISAMC"
 <p>binType: VISA, MasterCard vb olarak kartın tipini öğrenebilir, ilgili sayfanızda hazırlayacağınız temsili bir kart ile de logosunu gösterebilirsiniz. Ayrıca kartın ilk 6 hanenin girilmesini beklemeden de kartın ilk iki hanesi ve küçük bir liste ile aynı kontrolü sağlayabilirsiniz.</p>
-<p>binIssuer / program / installments Bu alanlar ise çalışmamızda ihtiyacımız olan en önemli alanlar. Bunun en büyük sebebi PayU'nun taksit oranlarınızı içeren bir data paylaşmıyor oluşu ve aynı tabloyu kendi sisteminizde tekrar hazırmanızı istemesi :</p>
+<p>binIssuer / program / installments Bu alanlar ise çalışmamızda ihtiyacımız olan en önemli alanlar. Bunun en büyük sebebi PayU'nun taksit oranlarınızı içeren bir servis paylaşmıyor oluşu ve aynı tabloyu kendi sisteminizde tekrar hazırmanızı istemesi :</p>
+<p align="center"><img src="https://raw.githubusercontent.com/hknklic/PayUCardInfo/master/README/card_info_payu.png"><p>            
