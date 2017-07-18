@@ -1,7 +1,7 @@
 # <img src="https://raw.githubusercontent.com/hknklic/PayUCardInfo/master/README/card_info_payu.png">
 > Durum Senaryomuz : C# ile yazdığımız bir projede, PayU ödeme sistemini kullanıyoruz. İhtiyacımız ise PayU'nun bizlere sağlamış olduğu v1 kredi kartı sorgulama api'sini kullanmak ve kartın sadece ilk 6 hanesi(BIN) ile; kart tipi, hangi bankaya ait olduğu, taksit vb bir çok bilgiyi çekmek.  
 ## Card Info - API v1
-Card Info - API v1 ile bize olası dönebilecek bilgiler :
+Card Info - API v1 ile bize olası dönebilecek bilgiler:
 
 - "binType":"VISA"
 - "binIssuer":"IS BANK", 
@@ -20,3 +20,14 @@ Card Info - API v1 ile bize olası dönebilecek bilgiler :
 
 <p>Her ne kadar v2 ile girilen kartın taksit komisyonlarına ulaşabiliyor olsak da bunun için karta ait tüm bilgileri girmemiz istenmekte. Bizim tek amacımız çalışan bir sistem ise tercih edilebilir gözükmekte ancak doğru çalışan bir sistem ise, durup düşünmekte fayda var! Zira yapılan araştırmalarda sepeti terketme oralarını hiç %60 altında görmedim. Hal böyleyken kullanıcıya tüm kart bilgilerini girdikten sonra taksit bilgilerini sunmak, bir çok sabırsız müşteriyi kaybetmek olacaktır.<p>
 <p>Bizlerin amacı ise v1 ile gerekli bilgileri elde etmek daha sonra bunu kendi taksit tablomuz ile karşılaştırarak ilgili oranları daha ilk altı hanede sunmuş olacağız.</p>
+
+## Başlayalım!
+
+Elimizde Http ile haberleşeceğimiz bir servis bulunmakta. İstekte bulunacağımız bu yapıyı inceleyelim:
+<p>Dökümanlarında yer alan örnek yapı</p>
+
+> https://secure.payu.com.tr/api/card-info/v1/ (İstekte bulunacağımız servisimiz.)
+- 4444444444 (Kartımızın en az ilk altı hanesi.)
+- ?timestamp=1421426073 (Unix zaman damgamız)
+- &merchant=MERCHANTCODE (PayU tarafından sizlere özel sağlanan kodunuz.)
+- &signature=8ab027fdaf1eee0e1ecf2dd82cabc9a6668420011d05a1de329782b5b2566c57 (Yine PayU tarafından sizlere sağlanan gizli kodunuz ile oluşturabileceğiniz imzanız.)
