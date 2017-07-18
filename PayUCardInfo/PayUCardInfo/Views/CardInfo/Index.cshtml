@@ -1,0 +1,50 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>PayU Card Info v1</title>
+</head>
+<body>
+    <div> 
+
+
+        <input id="CardBIN" type="number" />
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script>
+
+            $(document).ready(function () {
+
+                $('#CardBIN').on('keyup change', function () {
+
+                    if ($(this).val().length > 5) {
+
+                        var data = { _CardNum: $(this).val() }
+
+                        $.ajax({
+                            url: "fGetPayuCardBINV1",
+                            type: "POST",
+                            data: JSON.stringify(data),
+                            contentType: "application/json; charset=utf-8",
+                            datatype: "json",
+                            success: function (data) {
+                            }
+
+                        });
+                    }
+
+                });
+            });
+
+        </script>
+
+    </div>
+</body>
+</html>
