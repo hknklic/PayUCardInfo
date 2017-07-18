@@ -13,3 +13,5 @@ Card Info - API v1 ile bize olası dönebilecek bilgiler :
 <p>binType: VISA, MasterCard vb olarak kartın tipini öğrenebilir, ilgili sayfanızda hazırlayacağınız temsili bir kart ile de logosunu gösterebilirsiniz. Ayrıca kartın ilk 6 hanenin girilmesini beklemeden de kartın ilk iki hanesi ve küçük bir liste ile aynı kontrolü sağlayabilirsiniz.</p>
 <p>binIssuer / program / installments Bu alanlar ise çalışmamızda ihtiyacımız olan en önemli alanlar. Bunun en büyük sebebi PayU'nun taksit oranlarınızı içeren bir servis paylaşmıyor oluşu ve aynı tabloyu kendi sisteminizde tekrar hazırmanızı istemesi :</p>
 <p align="center"><img src="https://raw.githubusercontent.com/hknklic/PayUCardInfo/master/README/payu_taksit.PNG"><p>            
+<p>Ayrıca bir yanlış anlaşılmaya izin vermemek için değinmeliyim, eğer v2 kullanırsanız karta ait taksit komisyonlarını çekebiliyorsunuz ancak burada ki asıl sorun bizden karta ait tüm bilgileri istemesi.</p>
+<p>En nihayetinde ilgili ürüne ait sayfada tüm kartların taksit oranlarını paylaşmak istiyorsak kendi tablomuzu oluşturmak zorundayız.</p>
