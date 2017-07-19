@@ -13,34 +13,43 @@
 <body>
     <div> 
 
-
-        <input id="CardBIN" type="number" />
+        <div style="width:600px; margin:60px auto; text-align:center;" >
+        <h1>PayU Card Info v1</h1>
+        <h5>- CARD NO -</h5>
+        <input id="CardBIN" type="number"/>
+        <div style="margin: 40px auto; border: 1px solid; border-radius: 36px; height: 245px; width: 400px; font-size: 1.3em;">
+            <div id="binType" style="float: right; padding: 20px 28px;"></div>
+            <div id="country" style="float: left; padding: 20px 28px;"></div>
+            <div id="cardno" style="margin-top: 100px; font-size: 1.6em;"></div>
+            <div id="binIssuer" style="float: left; padding: 48px 20px;"></div>
+            <div id="program" style="float: right; padding: 48px 20px;"></div>
+        </div>
+        </div>
+        
 
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script>
 
-            $(document).ready(function () {
-
-                $('#CardBIN').on('keyup change', function () {
-
-                    if ($(this).val().length > 5) {
-
-                        var data = { _CardNum: $(this).val() }
-
-                        $.ajax({
-                            url: "fGetPayuCardBINV1",
-                            type: "POST",
-                            data: JSON.stringify(data),
-                            contentType: "application/json; charset=utf-8",
-                            datatype: "json",
-                            success: function (data) {
-                            }
-
-                        });
-                    }
-
-                });
+            $('#CardBIN').on('keyup change', function () {
+                $("#cardno").html($(this).val().replace(/\W/gi, '').replace(/(.{4})/g, '$1 '))
+                if ($(this).val().length === 6) {
+                    var data = { _CardNum: $(this).val() }
+                    $.ajax({
+                        url: "fGetPayuCardBINV1",
+                        type: "POST",
+                        data: JSON.stringify(data),
+                        contentType: "application/json; charset=utf-8",
+                        datatype: "json",
+                        success: function (data)
+                        {
+                            $("#binType").html(data._BinData.root.cardBinInfo.binType);
+                            $("#country").html(data._BinData.root.cardBinInfo.country);
+                            $("#binIssuer").html(data._BinData.root.cardBinInfo.binIssuer);
+                            $("#program").html(data._BinData.root.cardBinInfo.program);
+                        }
+                    });
+                }
             });
 
         </script>

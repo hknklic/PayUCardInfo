@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Net;
 using System.Security.Cryptography;
 using System.Text;
@@ -19,6 +20,7 @@ namespace PayUCardInfo.Controllers
         {
 
             WebClient _Client = new WebClient();
+            BINDataResponseV1 _BinData = new BINDataResponseV1();
 
             string URL = "https://secure.payu.com.tr/api/card-info/v1/";
             string merchant = "OPU_TEST";
@@ -27,8 +29,9 @@ namespace PayUCardInfo.Controllers
             string signature = BitConverter.ToString(hmacSHA256(merchant + timestamp, secretkey)).Replace("-", "").ToLower();
 
             var _Request = _Client.DownloadString(URL + _CardNum + "?merchant=" + merchant + "&timestamp=" + timestamp + "&signature=" + signature);
+            _BinData.root = JsonConvert.DeserializeObject<BINDataResponseV1.ROOT>(_Request);
 
-            return Json(new { _Request = _Request }, JsonRequestBehavior.AllowGet);
+            return Json(new { _BinData = _BinData }, JsonRequestBehavior.AllowGet);
 
         }
 
@@ -45,6 +48,64 @@ namespace PayUCardInfo.Controllers
             DateTime sTime = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
             return (long)(datetime - sTime).TotalSeconds;
+
+        }
+
+
+        public class BINDataResponseV1
+        {
+            public ROOT root { get; set; }
+
+            public BINDataResponseV1()
+            {
+                root = new ROOT();
+            }
+
+            public class ROOT
+            {
+                public META meta { get; set; }
+                public CARDBININFO cardBinInfo { get; set; }
+
+                public ROOT()
+                {
+                    meta = new META();
+                    cardBinInfo = new CARDBININFO();
+                }
+
+                public class META
+                {
+                    public STATUS status { get; set; }
+                    public RESPONSE response { get; set; }
+
+                    public META()
+                    {
+                        status = new STATUS();
+                        response = new RESPONSE();
+                    }
+
+                    public class STATUS
+                    {
+                        public string code { get; set; }
+                        public string message { get; set; }
+                    }
+                    public class RESPONSE
+                    {
+                        public string httpCode { get; set; }
+                        public string httpMessage { get; set; }
+                    }
+                }
+
+                public class CARDBININFO
+                {
+                    public string binType { get; set; }
+                    public string binIssuer { get; set; }
+                    public string cardType { get; set; }
+                    public string country { get; set; }
+                    public string program { get; set; }
+                    public string[] installments { get; set; }
+                    public string paymentMethod { get; set; }
+                }
+            }
         }
 
     }
