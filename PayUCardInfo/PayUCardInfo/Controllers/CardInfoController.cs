@@ -27,11 +27,16 @@ namespace PayUCardInfo.Controllers
             string URL = "https://secure.payu.com.tr/api/card-info/v1/";
             /// PayU tarafından size özel sağlanan kodunuz.
             string merchant = "";
+            /// PayU tarafından size özel sağlanan gizli kodunuz.
             string secretkey = "";
+            /// Unix zaman damgamız
             string timestamp = ConvertToUnixTime(DateTime.Now.AddHours(-3)).ToString();
+            /// PayU tarafından sizlere sağlanan gizli kodunuz ile oluşturacağınız imzanız.
             string signature = BitConverter.ToString(hmacSHA256(merchant + timestamp, secretkey)).Replace("-", "").ToLower();
 
+            /// Http Request işleminiz.
             var _Request = _Client.DownloadString(URL + _CardNum + "?merchant=" + merchant + "&timestamp=" + timestamp + "&signature=" + signature);
+            /// Sonuç
             _BinData.root = JsonConvert.DeserializeObject<BINDataResponseV1.ROOT>(_Request);
 
             return Json(new { _BinData = _BinData }, JsonRequestBehavior.AllowGet);
