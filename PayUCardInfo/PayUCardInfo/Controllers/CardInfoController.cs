@@ -18,13 +18,16 @@ namespace PayUCardInfo.Controllers
 
         public JsonResult fGetPayuCardBINV1(string _CardNum)
         {
-
+            /// Http Request için kullanacağımız metodumuz.
             WebClient _Client = new WebClient();
+            /// Dönen sonucumuzu basacağımız class yapımız.
             BINDataResponseV1 _BinData = new BINDataResponseV1();
 
+            /// İstekte bulunacağımız servisimiz
             string URL = "https://secure.payu.com.tr/api/card-info/v1/";
-            string merchant = "OPU_TEST";
-            string secretkey = "SECRET_KEY";
+            /// PayU tarafından size özel sağlanan kodunuz.
+            string merchant = "";
+            string secretkey = "";
             string timestamp = ConvertToUnixTime(DateTime.Now.AddHours(-3)).ToString();
             string signature = BitConverter.ToString(hmacSHA256(merchant + timestamp, secretkey)).Replace("-", "").ToLower();
 
