@@ -19,7 +19,7 @@ Card Info - API v1 ile bize olası dönebilecek bilgiler:
 ## Neden v2 değil de v1 kullanıyoruz ?
 
 <p>Her ne kadar v2 ile girilen kartın taksit komisyonlarına ulaşabiliyor olsak da bunun için karta ait tüm bilgileri girmemiz istenmekte. Bizim tek amacımız çalışan bir sistem ise tercih edilebilir gözükmekte ancak doğru çalışan bir sistem ise, durup düşünmekte fayda var! Zira yapılan araştırmalarda sepeti terketme oranlarını hiç %60 altında görmedim. Hal böyleyken kullanıcıya tüm kart bilgilerini girdikten sonra taksit bilgilerini sunmak, bir çok sabırsız müşteriyi kaybetmek olacaktır.<p>
-<p>Bizlerin amacı ise v1 ile gerekli bilgileri elde etmek daha sonra bunu kendi taksit tablomuz ile karşılaştırarak ilgili oranları daha ilk altı hanede sunmuş olacağız.</p>
+<p>Bizlerin amacı ise v1 ile gerekli bilgileri elde etmek, daha sonra bunu kendi taksit tablomuz ile karşılaştırarak ilgili oranları daha ilk altı hanede sunmuş olmak.</p>
 
 ## Başlayalım!
 
